@@ -1,2 +1,70 @@
-Hello world 
-Hello Miro code git
+import turtle
+import random
+
+def draw_star(turtle_obj, x, y, size, color):
+    turtle_obj.penup()
+    turtle_obj.goto(x, y)
+    turtle_obj.pendown()
+    turtle_obj.color(color)
+    turtle_obj.begin_fill()
+    for _ in range(5):
+        turtle_obj.forward(size)
+        turtle_obj.right(144)
+    turtle_obj.end_fill()
+
+def draw_moon(turtle_obj, x, y, radius):
+    turtle_obj.penup()
+    turtle_obj.goto(x, y - radius)
+    turtle_obj.pendown()
+    turtle_obj.color("lightgrey")
+    turtle_obj.begin_fill()
+    turtle_obj.circle(radius)
+    turtle_obj.end_fill()
+
+def draw_boat(turtle_obj):
+    turtle_obj.penup()
+    turtle_obj.goto(-50, -50)
+    turtle_obj.pendown()
+    turtle_obj.color("saddlebrown")
+    turtle_obj.begin_fill()
+    for _ in range(2):
+        turtle_obj.forward(100)
+        turtle_obj.left(90)
+        turtle_obj.forward(20)
+        turtle_obj.left(90)
+    turtle_obj.end_fill()
+
+    # Draw sail
+    turtle_obj.penup()
+    turtle_obj.goto(-30, -30)
+    turtle_obj.pendown()
+    turtle_obj.color("white")
+    turtle_obj.begin_fill()
+    turtle_obj.goto(-30, 20)
+    turtle_obj.goto(30, 20)
+    turtle_obj.goto(30, -30)
+    turtle_obj.goto(-30, -30)
+    turtle_obj.end_fill()
+
+def draw_harbor_space():
+    screen = turtle.Screen()
+    screen.bgcolor("darkblue")
+    artist = turtle.Turtle()
+    artist.speed(0)
+
+    # Draw stars
+    for _ in range(30):
+        x = random.randint(-300, 300)
+        y = random.randint(0, 300)
+        draw_star(artist, x, y, 10, "white")
+
+    # Draw moon
+    draw_moon(artist, 200, 150, 50)
+
+    # Draw boat
+    draw_boat(artist)
+
+    artist.hideturtle()
+    screen.mainloop()
+
+if
